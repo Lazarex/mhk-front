@@ -1,0 +1,70 @@
+.c-control {
+	//display: block;
+
+	&:after, &:before {
+		content: '';
+		display: table;
+		clear: both;
+	}
+
+	&__text {
+		display: block;
+		line-height: 1.3;
+		padding: 1px 0 0 32px;
+		font-size: 16px;
+		font-weight: 400;
+		letter-spacing: -.015em;
+	}
+
+	[type="checkbox"], [type="radio"] {
+		&:not(:checked), &:checked {
+			position: absolute;
+			left: -9999px;
+
+			& + .c-control__icon {
+				position: relative;
+				top: 1px;
+				display: block;
+				height: 18px;
+				width: 18px;
+				cursor: pointer;
+				float: left;
+
+				&:before {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					width: 18px;
+					height: 18px;
+					border-radius: 3px;
+					background: white;
+					border: 2px solid #e6e6e6;
+				}
+
+				&:after {
+					content: '';
+					border: 2px solid #e50000;
+					border-top-width: 0;
+					border-right-width: 0;
+					width: 10px;
+					height: 5px;
+					position: absolute;
+					top: 5px;
+					left: 4px;
+
+					background: transparent;
+					transform: rotate(-45deg);
+				}
+			}
+		}
+
+		&:not(:checked) {
+			& + .c-control__icon {
+				&:after {
+					display: none;
+				}
+			}
+		}
+	}
+}

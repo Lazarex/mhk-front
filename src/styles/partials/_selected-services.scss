@@ -1,0 +1,113 @@
+.selected-services {
+  background: #fff;
+
+  @media (min-width: 1200px) {
+    &.isSticky {
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-top: 1px solid #e3e4e5;
+
+      .col-xs-12 {
+        border: 0;
+      }
+
+      .selected-services__container {
+        //max-height: 92px;
+        //overflow-y: auto;
+      }
+
+      .selected-services__button {
+        display: block;
+      }
+    }
+  }
+
+  .col-xs-12 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    border-top: 1px solid #e3e4e5;
+    border-bottom: 1px solid #e3e4e5;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    @media (min-width: 500px) {
+      flex-wrap: nowrap;
+    }
+  }
+
+  &__button {
+    display: none;
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    margin: 5px 10px 5px 0;
+    min-width: 111px;
+    height: 36px;
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (min-width: 1200px) {
+      max-height: 200px;
+      overflow-y: auto;
+      margin-right: 5px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    background: #f0f0f0;
+    transition: background 100ms linear;
+    cursor: default;
+    padding: 0 30px 0 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin: 5px 10px 5px 0;
+    width: 100%;
+    white-space: nowrap;
+
+    @media (min-width: 500px) {
+      width: auto;
+    }
+
+    &__close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 30px;
+      cursor: pointer;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: calc(50% - 4px);
+        width: 8px;
+        height: 1px;
+        background: #e53416;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

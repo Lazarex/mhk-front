@@ -1,0 +1,33 @@
+.nav {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border-bottom: 3px solid #77b6ad;
+  padding: 15px 25px;
+
+  &_item {
+    margin: 0 15px;
+
+    &:not(.active) {
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &.active {
+      color: #08a0a1;
+    }
+  }
+
+  @at-root {
+    &-logo {
+      font-size: 18px;
+    }
+
+    &-account {
+      margin-left: auto;
+    }
+  }
+}
