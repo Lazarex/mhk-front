@@ -96,7 +96,7 @@ class SignUp extends React.Component {
     </p>;
 
     const errorSubmit = signUpError && <p className="error">
-      Неверные логин или пароль
+      Такой логин уже существует
     </p>;
 
     return (
