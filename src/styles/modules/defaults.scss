@@ -1,4 +1,4 @@
-$default-font: 'Roboto', sans-serif;
+@import '../partials/theme.scss';
 
 html, body {
   font-family: $default-font;
@@ -6,3 +6,68 @@ html, body {
   font-size: 16px;
   background: #ffffff;
 }
+
+.container {
+  max-width: 1090px;
+  padding: 0 15px;
+  margin: auto;
+}
+
+h1 {
+  font: 500 36px/1.2 $default-font;
+  text-align: center;
+  padding: 60px 0;
+}
+
+input {
+  height: 48px;
+  width: 100%;
+  padding: 0 16px;
+  border-radius: $border-radius;
+  border: 1px solid $input-border-color;
+  font: 400 16px $default-font;
+  transition: border-color .1s;
+
+  &:focus {
+    border-color: darken($input-border-color, 15%);
+  }
+
+  &.error {
+    border-color: $input-border-color-error;
+  }
+}
+
+.btn {
+  border-radius: $border-radius;
+  background: $button-color;
+  width: 100%;
+  height: 48px;
+  text-align: center;
+  cursor: pointer;
+  transition: background .1s;
+  font-size: 18px;
+  letter-spacing: .01em;
+
+  &:hover {
+    background: $button-color-hover;
+  }
+
+  &:active {
+    background: $button-color-active
+  }
+}
+
+a {
+  font-size: 18px;
+  color: $link-color;
+  text-decoration: underline;
+
+  &:hover {
+    color: $link-color-hover;
+  }
+
+  &:active {
+    color: $link-color-active;
+  }
+}
+

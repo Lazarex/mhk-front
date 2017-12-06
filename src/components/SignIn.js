@@ -5,14 +5,17 @@ import '../styles/signIn.scss';
 
 class SignIn extends React.Component {
   render() {
+    // '{"email":"sss@sss.ru","iat":1512479222}'.toObject();
+    console.log(1,JSON.parse('{"email":"sss@sss.ru","iat":1512479222}'))
     return (
       <div className="wrapper">
         <Nav active />
         <main role="main" className="container">
+          <div className="sign-form"></div>
           <form className="form-signin" action="javascript:void(0)">
             <h2 className="form-signin-heading">Please sign in</h2>
             <label htmlFor="inputEmail" className="sr-only">Email address</label>
-            <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
+            <input type="text" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus />
             <label htmlFor="inputPassword" className="sr-only">Password</label>
             <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
             <div className="checkbox">

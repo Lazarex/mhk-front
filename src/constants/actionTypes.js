@@ -1,6 +1,4 @@
-export const SET_CAR_LIST = 'SET_CAR_LIST';
-export const SET_BROCHURES = 'SET_BROCHURES';
-export const SET_USER_NAME = 'SET_USER_NAME';
-export const SET_USER_EMAIL = 'SET_USER_EMAIL';
-export const SET_USER_AGREE = 'SET_USER_AGREE';
-export const SET_SUBMIT_STATUS = 'SET_SUBMIT_STATUS';
+export const SET_SIGN_IN_ERROR = 'SET_SIGN_IN_ERROR';
+export const SET_SIGN_UP_ERROR = 'SET_SIGN_UP_ERROR';
+export const SET_SIGN_IN_SUCCESS = 'SET_SIGN_IN_SUCCESS';
+export const SET_SIGN_UP_SUCCESS = 'SET_SIGN_UP_SUCCESS';

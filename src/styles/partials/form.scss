@@ -1,0 +1,22 @@
+@import '../partials/theme.scss';
+
+.form {
+  label {
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  &_group {
+    padding-bottom: 25px;
+  }
+
+  &_link {
+    text-align: center;
+  }
+}
+
+p.error {
+  font-size: 12px;
+  color: red;
+  margin-top: 8px;
+}

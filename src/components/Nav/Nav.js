@@ -5,9 +5,35 @@ import classNames from 'classnames';
 import './Nav.scss';
 
 class Nav extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.logOut = this.logOut.bind(this);
+
+    this.state = {
+      email: null,
+    }
+  }
+  componentWillMount() {
+    const email = localStorage.getItem('email')
+
+    if (email) {
+      this.setState({
+        email
+      });
+    }
+  }
+
+  logOut() {
+    localStorage.removeItem('JWT');
+    localStorage.removeItem('email');
+
+    this.setState({
+      email: null
+    });
+  }
 
   render() {
-    console.log('this.props.active', this.props.active)
+    const { email } = this.state;
     return (
       <nav className="nav">
         <Link className={classNames({
@@ -21,10 +47,20 @@ class Nav extends React.Component {
         <div className="nav_item">Задания <span>82</span></div>
         <div className="nav_item">Киртан-радио</div>
         <div className="nav-account">
-          <Link className={classNames({
-            nav_item: true,
-            active: this.props.active,
-          })} to="sign-in">Вход</Link>
+          {!email ?
+            <Link className={classNames({
+              nav_item: true,
+              active: this.props.active,
+            })} to="sign-in">Вход</Link>
+          : <div className="nav-account_user">
+            <span>{email}</span>
+            <a
+              className="nav_item gray"
+              onClick={this.logOut}
+            >Выход</a>
+          </div>
+          }
+
         </div>
         {/*<div className="collapse navbar-collapse" id="navbarsExampleDefault">*/}
           {/*<ul className="navbar-nav mr-auto">*/}

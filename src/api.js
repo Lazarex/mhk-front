@@ -1,5 +1,6 @@
 import axios from 'axios';
-// import * as actions from './actions/formActions';
+import * as authActions from './actions/authActions';
+import { push } from 'react-router-redux';
 
 export function makeRequest(params, then, error) {
   axios(params).then((result) => {
@@ -9,55 +10,67 @@ export function makeRequest(params, then, error) {
   });
 }
 
-export const createUser = (dispatcher, data1) => {
+export const signUp = (dispatcher, data) => {
   const url = 'http://mhk.onsib.ru/api/v1/user/';
-
-  const data = {
-    email: 'user44@user.ru',
-    password: 'so44me_pwd',
-  };
 
   const method = 'post';
 
   makeRequest(
     { url, data, method },
     response => {
-      console.log('response', response);
+      // localStorage.setItem('JWT', response.data);
+      // dispatcher(push('/'));
+      // console.log('re', response.data)
+
+
+
+      dispatcher(authActions.setSignUpSuccess(true)); // refactor
+      dispatcher(authActions.setSignUpError(false));
     },
-    error => {console.log('error', error)
-      //handle error
+    () => {
+      dispatcher(authActions.setSignUpError(true));
     }
   );
 };
 
-export const signIn = (dispatcher, data1) => {
+export const signIn = (dispatcher, data) => {
   const url = 'http://mhk.onsib.ru/api/v1/login';
-
-  const data = {
-    email: 'user44@user.ru',
-    password: 'so44me_pwd',
-  };
 
   const method = 'post';
 
   makeRequest(
     { url, data, method },
-    response => {//
-      console.log('response', response)
+    response => {
+      try {
+        const payload = JSON.parse(atob(response.data.match(/\.([^.]+)\./)[1]));
+
+        localStorage.setItem('JWT', response.data);
+        localStorage.setItem('email', payload.email);
+
+        dispatcher(push('/'));
+        dispatcher(authActions.setSignInError(false)); // ?
+      } catch (err) {//
+        console.log(err)
+        dispatcher(authActions.setSignInError(true));
+      }
     },
-    error => {console.log('error', error)
-      //handle error
+    () => {
+      dispatcher(authActions.setSignInError(true));
     }
   );
 };
 
-export const confirmAuth = (dispatcher, data1) => {
+export const confirmAuth = (dispatcher, token) => {
   const url = 'http://mhk.onsib.ru/api/v1/auth';
 
   const method = 'get';
 
+  const headers = {
+    Authorization: `JWT ${token}`
+  };
+
   makeRequest(
-    { url,},
+    { url, method, headers },
     response => {
       console.log('response', response);
     },

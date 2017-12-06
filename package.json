@@ -59,6 +59,7 @@
     "coveralls": "2.13.1",
     "classnames": "latest",
     "css-loader": "0.28.7",
+    "email-validator": "^1.1.1",
     "enzyme": "3.0.0",
     "enzyme-adapter-react-16": "1.0.0",
     "eslint": "4.2.0",

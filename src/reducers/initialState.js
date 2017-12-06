@@ -1,8 +1,6 @@
 export default {
-  carList: null,
-  brochures: [],
-  name: null,
-  email: null,
-  agree: true,
-  submitStatus: null,
+  signInError: false,
+  signUpError: false,
+  signInSuccess: false,
+  signUpSuccess: false,
 };
