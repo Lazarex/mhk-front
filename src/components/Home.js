@@ -13,11 +13,10 @@ class Home extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <Nav />
-        <main role="main" className="container">
-        content
-      </main>
-        {/*<Footer />*/}
+        <Nav home />
+        <main role="main">
+          <h1>Главная</h1>
+        </main>
       </div>
     );
   }

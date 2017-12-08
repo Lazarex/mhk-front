@@ -1,0 +1,11 @@
+.stats {
+  width: 600px;
+  margin: auto;
+  padding-bottom: 150px;
+
+  &_text {
+    text-align: center;
+    padding: 10px 0 40px;
+    font-size: 18px;
+  }
+}

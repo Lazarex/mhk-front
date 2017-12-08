@@ -1,33 +1,68 @@
+@import '../../styles/partials/theme.scss';
+
 .nav {
   display: flex;
   align-items: center;
-  height: 60px;
-  border-bottom: 3px solid #77b6ad;
+  height: 83px;
+  border-bottom: 3px solid $default-parts-color;
   padding: 15px 25px;
 
   &_item {
     margin: 0 15px;
+    text-decoration: none;
+    transition: color $default-transition;
+    color: #000;
+    font-size: 18px;
+
 
     &:not(.active) {
       cursor: pointer;
 
       &:hover {
-        text-decoration: underline;
+        color: $default-parts-color;
+        //text-decoration: underline;
       }
     }
 
     &.active {
-      color: #08a0a1;
+      color: $default-parts-color;
+    }
+
+    &.log-out {
+      color: #999999;
     }
   }
 
   @at-root {
-    &-logo {
-      font-size: 18px;
+    &-logo {//
+      font-size: 24px;
+      margin: 0 15px;
+      color: #000;
+      text-decoration: none;
+
+      &:hover {
+        color: #000;
+      }
     }
 
     &-account {
       margin-left: auto;
+
+      &_user {
+
+        display: flex;
+        align-items: center;
+      }
+
+      &_user_name {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+
+        img {
+          margin-right: 15px;
+        }
+      }
     }
   }
 }

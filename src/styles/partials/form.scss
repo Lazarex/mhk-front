@@ -7,12 +7,36 @@
   }
 
   &_group {
+    display: flex;
+    justify-content: space-between;
     padding-bottom: 25px;
+
+    &:first-child {
+      padding-bottom: 0;
+    }
+
+    &:nth-child(2) {
+      padding-bottom: 40px;
+    }
   }
 
   &_link {
     text-align: center;
   }
+
+  &_item {
+    width: 100%;
+    //min-height: 100px;
+
+    &._50 {
+      width: calc(50% - 10px);
+    }
+  }
+}
+
+.input {
+  width: 100%!important;
+  //min-height: 100px;
 }
 
 p.error {

@@ -6,12 +6,14 @@ import NotFoundPage from './NotFoundPage';
 import Home from '../components/Home';
 import SignIn from '../components/Auth/SignIn';
 import SignUp from '../components/Auth/SignUp';
+import Stats from '../components/Stats/Stats';
 class App extends React.Component {
   render() {
     return (
       <div>
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/stats" component={Stats} />
           <Route exact path="/sign-in" component={SignIn} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route component={NotFoundPage} />

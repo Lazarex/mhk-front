@@ -1,10 +1,4 @@
 .auth {
-  min-height: calc(100vh - 60px);
-  display: flex;
-  justify-content: center;
-
-  &_container {
-    width: 290px;
-  }
-
+  width: 290px;
+  margin: auto;
 }

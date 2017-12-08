@@ -2,25 +2,13 @@
 CONFIG MODULES
 ----------------------------------*/
 
-//@import "modules/controls.scss";
 @import "modules/reset.scss";
-@import "modules/defaults.scss";
+@import "modules/react-select.scss";
 
 /*----------------------------------
 PARTIALS
 ----------------------------------*/
 
-//@import "partials/_car-catalog.scss";
-//@import "partials/_car-item.scss";
-//@import "partials/_selected-services.scss";
 @import "partials/form.scss";
-
-/*
- * Globals
- */
-
-
-//.container {
-//  max-width: 60rem;
-//}
-
+@import "partials/defaults.scss";
+@import "partials/helpers.scss";
