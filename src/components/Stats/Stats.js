@@ -81,11 +81,11 @@ class Stats extends React.Component {
                     <div className="form_group" style={{paddingBottom: 25}}>
                       <div className="form_item">
                         <TextField
-                          floatingLabelText="Введите имя"
-                          hintText="Имя"
+                          floatingLabelText="Введите логин в формате @user"
+                          hintText="Логин"
                           // errorText={emailError && 'Проверьте правильность заполнения'}
                           className="input"
-                          // value={firstName}
+                          // value={firstName} // '@' + value?
                           // onChange={this.setFirstName}
                           // onBlur={this.blurEmail}
                           autoComplete="off"
