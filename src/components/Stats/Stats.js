@@ -1,18 +1,40 @@
 import React from 'react';
 import Nav from '../Nav/Nav';
+import TaskBar from '../TaskBar/TaskBar';
 import Form from './Form';
 import './Stats.scss';
+import '../Account/Auth.scss'; // todo rename class
+import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
+import TextField from 'material-ui/TextField';
+
 
 class Stats extends React.Component {
+  constructor(props, context) {
+    super(props, context);
+    this.popup = this.popup.bind(this);
+
+    this.state = {
+      popup: false,
+    }
+  }
+
+  popup() {
+    this.setState({
+      popup: !this.state.popup,
+    });
+  }
+
   render() {
     return (
       <div className="wrapper">
         <Nav stats />
+        <TaskBar />
         <main role="main">
           <div className="stats-bar">
 
           </div>
-          <div className="container">
+          <div className="container w-600">
             <h1>Статистика</h1>
             <div className="stats">
               <Form />
@@ -33,9 +55,74 @@ class Stats extends React.Component {
                 мероприятия&nbsp;&mdash; общайтесь с&nbsp;единомышленниками
                 из&nbsp;вашего региона.
               </div>
-              <button className="btn _w-auto">
-                Присоедилиться к чату Москва и область
-              </button>
+              <div style={{textAlign: 'center'}}>
+                <RaisedButton
+                  className="btn"
+                  backgroundColor="#fbb03b"
+                  // fullWidth={true}
+                  label="Присоедилиться к чату Москва и область"
+                  style={{height: '46px'}}
+                  onClick={this.popup}
+                />
+              </div>
+              <Dialog
+                className="popup"
+                modal={false}
+                open={this.state.popup}
+                onRequestClose={this.popup}
+              >
+                <div // @todo component & rename auth class
+                  className="popup-close"
+                  onClick={this.popup}
+                />
+                <h3>Введите ваше имя <br/>пользователя в Телеграм</h3>
+                <div className="auth">
+                  <div className="form">
+                    <div className="form_group" style={{paddingBottom: 25}}>
+                      <div className="form_item">
+                        <TextField
+                          floatingLabelText="Введите имя"
+                          hintText="Имя"
+                          // errorText={emailError && 'Проверьте правильность заполнения'}
+                          className="input"
+                          // value={firstName}
+                          // onChange={this.setFirstName}
+                          // onBlur={this.blurEmail}
+                          autoComplete="off"
+                        />
+                      </div>
+                    </div>
+                    <div className="form_group">
+                      <div className="form_item">
+                        <RaisedButton
+                          className="btn"
+                          // onClick={this.submit}
+                          backgroundColor="#fbb03b"
+                          fullWidth={true}
+                          label="Получить ссылку"
+                          style={{height: '46px'}}
+                        />
+                        <div style={{color: '#fbb03b', fontSize: 12, textAlign: 'center', padding: '15px 0 0'}}>Ссылка придет на ваш e-mail</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div style={{
+                  color: '#000',
+                  maxWidth: 460,
+                  margin: 'auto'
+                }}>
+                  Чат работатет через мессенджер Telegram, который работатет на любом компьютере, планшете или смартфоне.
+                  <br/>
+                  <br/>
+                  Установить приложение можно по этой ссылке.
+                  <br/>
+                  <br/>
+                  Чтобы узнать имя пользователя – зайдите в настройки – Имя пользователя. Установите ваше имя пользователя.
+                  <br/>
+                  <br/>
+                </div>
+              </Dialog>
             </div>
           </div>
         </main>

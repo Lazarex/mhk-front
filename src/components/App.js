@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import NotFoundPage from './NotFoundPage';
 import Home from '../components/Home';
-import SignIn from '../components/Auth/SignIn';
-import SignUp from '../components/Auth/SignUp';
+import Profile from '../components/Account/Profile';
 import Stats from '../components/Stats/Stats';
 class App extends React.Component {
   render() {
@@ -14,8 +13,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/stats" component={Stats} />
-          <Route exact path="/sign-in" component={SignIn} />
-          <Route exact path="/sign-up" component={SignUp} />
+          <Route exact path="/profile" component={Profile} />
           <Route component={NotFoundPage} />
         </Switch>
       </div>

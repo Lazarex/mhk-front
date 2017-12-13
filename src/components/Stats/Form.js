@@ -1,5 +1,7 @@
 import React from 'react';
-import Select from 'react-select';
+// import Select from 'react-select';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 class Form extends React.Component {
   constructor(props, context) {
@@ -13,11 +15,11 @@ class Form extends React.Component {
     }
   }
 
-  setPeriod(period) {
+  setPeriod(event, index, period) {
     this.setState({ period });
   }
 
-  setTarget(target) {
+  setTarget(event, index, target) {
     this.setState({ target });
   }
 
@@ -26,34 +28,30 @@ class Form extends React.Component {
       <div className="stats-form form">
         <div className="form_group">
           <div className="form_item _50">
-            <Select
-              name="stats-form-period"
+            <SelectField
               value={this.state.period}
               onChange={this.setPeriod}
-              options={[
-                { value: 'day', label: 'День' },
-                { value: 'week', label: 'Неделя' },
-                { value: 'month', label: 'Месяц' },
-                { value: 'year', label: 'Год' },
+              floatingLabelText="Период"
+            >
+              {[
+                <MenuItem key={1} value={1} primaryText="Неделя" />,
+                <MenuItem key={2} value={2} primaryText="Месяц" />,
+                <MenuItem key={3} value={3} primaryText="Год" />,
               ]}
-              searchable={false}
-              clearable={false}
-              placeholder="Выбрать"
-            />
+            </SelectField>
           </div>
           <div className="form_item _50">
-            <Select
-              name="stats-form-target"
+            <SelectField
               value={this.state.target}
               onChange={this.setTarget}
-              options={[
-                { value: 'my', label: 'Моя' },
-                { value: 'my 2', label: 'Моя 2' },
+              floatingLabelText="Статистика"
+            >
+              {[
+                <MenuItem key={1} value={1} primaryText="Моя" />,
+                <MenuItem key={2} value={2} primaryText="Моя 2" />,
+                <MenuItem key={3} value={3} primaryText="Моя 3" />,
               ]}
-              searchable={false}
-              clearable={false}
-              placeholder="Выбрать"
-            />
+            </SelectField>
           </div>
         </div>
       </div>

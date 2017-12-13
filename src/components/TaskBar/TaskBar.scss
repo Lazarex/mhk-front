@@ -1,0 +1,64 @@
+@import '../../styles/partials/theme.scss';
+
+.task-bar {
+  display: flex;
+  height: 125px;
+  width: 100%;
+  border-bottom: 1px solid #C5C5C5;
+
+  &_total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 200px;
+
+    &_big {
+      font: 700 38px/1 "Roboto", sans-serif;
+      padding-bottom: 5px;
+    }
+
+    &_small {
+      color: #999999;
+    }
+  }
+
+  &_add {
+    display: flex;
+    align-items: center;
+    width: 320px;
+    margin-left: 20px;
+
+    &_item {
+      display: flex;
+      align-items: center;
+
+      &:not(:first-child) {
+        margin-left: 40px;
+      }
+
+      span {
+        margin-left: 15px;
+        font-size: 18px;
+        color: #0073e2;
+        text-decoration: underline;
+        cursor: default;
+      }
+    }
+  }
+
+  &_log {
+    align-self: center;
+    background: #f2f2f2;
+    font-size: 11px;
+    color: #999999;
+    margin-left: auto;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border-radius: 4px;
+
+    &_item {
+      padding: 5px 0;
+    }
+  }
+}

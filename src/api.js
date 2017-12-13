@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as authActions from './actions/authActions';
-import { push } from 'react-router-redux';
 
 export function makeRequest(params, then, error) {
   axios(params).then((result) => {
@@ -47,7 +46,7 @@ export const signIn = (dispatcher, data) => {
         localStorage.setItem('JWT', response.data);
         localStorage.setItem('email', payload.email);
 
-        dispatcher(push('/'));
+        dispatcher(authActions.setSignInSuccess(payload.email));
         dispatcher(authActions.setSignInError(false)); // ?
       } catch (err) {//
         console.log(err)
@@ -71,6 +70,22 @@ export const confirmAuth = (dispatcher, token) => {
 
   makeRequest(
     { url, method, headers },
+    response => {
+      console.log('response', response);
+    },
+    error => {console.log('error', error);
+      //handle error
+    }
+  );
+};
+
+export const editProfile = (dispatcher, data) => {
+  const url = 'http://mhk.onsib.ru/api/v1/user/profile';
+
+  const method = 'post';
+
+  makeRequest(
+    { url, data, method },
     response => {
       console.log('response', response);
     },

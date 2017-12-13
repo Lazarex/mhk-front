@@ -12,3 +12,40 @@ PARTIALS
 @import "partials/form.scss";
 @import "partials/defaults.scss";
 @import "partials/helpers.scss";
+
+.popup {
+  > div > div > div > div {
+    padding: 15px !important;
+  }
+
+  &-close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+
+    &:before, &:after {
+      position: absolute;
+      top: 8px;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background: #333;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+.pac-container {
+  z-index: 2000;
+}
