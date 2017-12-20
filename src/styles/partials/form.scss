@@ -8,16 +8,16 @@
 
   &_group {
     display: flex;
-    justify-content: space-between;
-    padding-bottom: 25px;
+    //justify-content: space-between;
+    //padding-bottom: 25px;
 
-    &:first-child {
-      padding-bottom: 0;
-    }
+    //&:first-child {
+    //  padding-bottom: 0;
+    //}
 
-    &:nth-child(2) {
-      padding-bottom: 40px;
-    }
+    //&:nth-child(2) {
+    //  padding-bottom: 40px;
+    //}
   }
 
   &_link {
@@ -30,17 +30,21 @@
 
     &._50 {
       width: calc(50% - 10px);
+
+      &:nth-child(2n + 2) {
+        margin-left: 20px;
+      }
     }
   }
 }
 
-.input {
-  width: 100% !important;
-  //min-height: 100px;
-}
+//.input {
+//  width: 100% !important;
+//  //min-height: 100px;
+//}
 
 p.error {
   font-size: 12px;
   color: red;
-  margin-top: 8px;
+  margin: 8px 0 0;
 }

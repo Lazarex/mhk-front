@@ -1,6 +1,6 @@
 export default {
-  signInError: false,
-  signUpError: false,
-  signInSuccess: false,
-  signUpSuccess: false,
+  loginError: false,
+  loginSuccess: false,
+  registrationError: false,
+  registrationSuccess: false,
 };

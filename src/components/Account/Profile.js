@@ -2,15 +2,12 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Nav from '../Nav/Nav';
 import { connect } from 'react-redux';
-import './Auth.scss';
+import Nav from '../Nav/Nav';
 import { editProfile } from '../../api';
-// import { setSignInError } from '../../actions/authActions';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-
-
+import { Input, Button } from 'antd';
+import './Account.scss';
+import UploadFile from './UploadFile';
 
 class Profile extends React.Component {
   constructor(props, context) {
@@ -107,93 +104,65 @@ class Profile extends React.Component {
     const { firstName, lastName, profession, file } = this.state;
 
     return (
-      <div className="w-600" style={{width: 600}}>
-        <div
-          className="popup-close"
-          onClick={this.props.onRequestClose}
-        />
-        <h3>Профиль</h3>
-        <div className="form">
-          <div className="form_group">
-            <div className="form_item">
-              <TextField
-                floatingLabelText="Выберите ваш город"
-                hintText="Начните вводить название населенного пункта"
-                className="input"
-                autoComplete="off"
-                name="search"
-                id="search"
-                placeholder=""
-              />
+      <div className="wrapper account">
+        <Nav auth/>
+        <h3 className="account_title">Настройки профиля</h3>
+        <div className="size-limit _630">
+          <div className="form">
+            <div className="form_group">
+              <div className="form_item">
+                <Input
+                  placeholder="Выберите ваш город"
+                  size={'large'}
+                  name="search"
+                  id="search"
+                />
+              </div>
             </div>
-          </div>
-          <div className="form_group">
-            <div className="form_item _50">
-              <TextField
-                floatingLabelText="Введите имя"
-                hintText="Имя"
-                // errorText={emailError && 'Проверьте правильность заполнения'}
-                className="input"
-                value={firstName}
-                onChange={this.setFirstName}
-                // onBlur={this.blurEmail}
-                autoComplete="off"
-              />
+            <div className="form_group">
+              <div className="form_item _50">
+                <Input
+                  placeholder="Введите имя"
+                  size={'large'}
+                  value={firstName}
+                  onChange={this.setFirstName}
+                />
+              </div>
+              <div className="form_item _50">
+                <Input
+                  placeholder="Введите фамилию"
+                  size={'large'}
+                  className="input"
+                  value={lastName}
+                  onChange={this.setLastName}
+                />
+              </div>
             </div>
-            <div className="form_item _50">
-              <TextField
-                floatingLabelText="Введите фамилию"
-                hintText="Фамилия"
-                // errorText={emailError && 'Проверьте правильность заполнения'}
-                className="input"
-                value={lastName}
-                onChange={this.setLastName}
-                // onBlur={this.blurEmail}
-                autoComplete="off"
-              />
+            <h3>Дополнительная информация</h3>
+            <div className="form_group">
+              <div className="form_item">
+                <Input
+                  placeholder="Ваша профессия"
+                  size={'large'}
+                  className="input"
+                  value={profession}
+                  onChange={this.setProfession}
+                />
+              </div>
             </div>
-          </div>
-          <h3>Дополнительная информация</h3>
-          <div className="form_group">
-            <div className="form_item">
-              <TextField
-                floatingLabelText="Ваша профессия"
-                hintText="Профессия"
-                // errorText={emailError && 'Проверьте правильность заполнения'}
-                className="input"
-                value={profession}
-                onChange={this.setProfession}
-                // onBlur={this.blurEmail}
-                autoComplete="off"
-              />
+            <div className="form_group">
+              <UploadFile />
             </div>
-          </div>
-          <div className="form_group">
-            <label
-              htmlFor="files"
-            >
-              + фото профиля
-            </label>
-            <input
-              id="files"
-              onChange={this.onFileChange}
-              className="file__input"
-              type="file"
-              placeholder=""
-              hidden
-            />
-            {file && file.name}
-          </div>
-          <div className="form_group">
-            <div className="form_item">
-              <RaisedButton
-                className="btn"
-                onClick={this.submit}
-                backgroundColor="#fbb03b"
-                fullWidth={true}
-                label="Готово"
-                style={{height: '46px'}}
-              />
+            <div className="form_group">
+              <div className="form_item">
+                <Button
+                  type="primary"
+                  size={'large'}
+                  onClick={this.submit}
+                >
+                  Готово
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -202,9 +171,9 @@ class Profile extends React.Component {
   }
 }
 
-Profile.propTypes = {
-  onRequestClose: PropTypes.func
-};
+// Profile.propTypes = {
+//   onRequestClose: PropTypes.func
+// };
 
 export default connect(store => ({
   // signInError: store.auth.signInError,

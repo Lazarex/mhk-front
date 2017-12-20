@@ -1,7 +1,9 @@
 import React from 'react';
 // import Select from 'react-select';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+// import SelectField from 'material-ui/SelectField';
+// import MenuItem from 'material-ui/MenuItem';
+import { Select } from 'antd';
+const Option = Select.Option;
 
 class Form extends React.Component {
   constructor(props, context) {
@@ -28,30 +30,20 @@ class Form extends React.Component {
       <div className="stats-form form">
         <div className="form_group">
           <div className="form_item _50">
-            <SelectField
-              value={this.state.period}
-              onChange={this.setPeriod}
-              floatingLabelText="Период"
-            >
-              {[
-                <MenuItem key={1} value={1} primaryText="Неделя" />,
-                <MenuItem key={2} value={2} primaryText="Месяц" />,
-                <MenuItem key={3} value={3} primaryText="Год" />,
-              ]}
-            </SelectField>
+            <Select defaultValue="lucy" onChange={this.setPeriod}>
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="disabled" disabled>Disabled</Option>
+              <Option value="Yiminghe">yiminghe</Option>
+            </Select>
           </div>
           <div className="form_item _50">
-            <SelectField
-              value={this.state.target}
-              onChange={this.setTarget}
-              floatingLabelText="Статистика"
-            >
-              {[
-                <MenuItem key={1} value={1} primaryText="Моя" />,
-                <MenuItem key={2} value={2} primaryText="Моя 2" />,
-                <MenuItem key={3} value={3} primaryText="Моя 3" />,
-              ]}
-            </SelectField>
+            <Select defaultValue="lucy" style={{width: 200}} size={'large'} onChange={this.setPeriod}>
+              <Option value="jack">Jack</Option>
+              <Option value="lucy">Lucy</Option>
+              <Option value="disabled" disabled>Disabled</Option>
+              <Option value="Yiminghe">yiminghe</Option>
+            </Select>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as authActions from './actions/authActions';
+import * as accountActions from './actions/accountActions';
 
 export function makeRequest(params, then, error) {
   axios(params).then((result) => {
@@ -9,33 +9,33 @@ export function makeRequest(params, then, error) {
   });
 }
 
-export const signUp = (dispatcher, data) => {
+export const registration = (dispatcher, data) => {
   const url = 'http://mhk.onsib.ru/api/v1/user/';
 
   const method = 'post';
 
   makeRequest(
     { url, data, method },
-    response => {
-      // localStorage.setItem('JWT', response.data);
-      // dispatcher(push('/'));
-      // console.log('re', response.data)
+    (response) => {
+      dispatcher(accountActions.setRegistrationSuccess(true)); // refactor
+      dispatcher(accountActions.setRegistrationError(false));
 
-
-
-      dispatcher(authActions.setSignUpSuccess(true)); // refactor
-      dispatcher(authActions.setSignUpError(false));
+      setTimeout(function () {
+        login(dispatcher, data);
+      }, 100)
     },
     () => {
-      dispatcher(authActions.setSignUpError(true));
+      dispatcher(accountActions.setRegistrationError(true));
     }
   );
 };
 
-export const signIn = (dispatcher, data) => {
+export const login = (dispatcher, data) => {
   const url = 'http://mhk.onsib.ru/api/v1/login';
 
   const method = 'post';
+
+  console.log('data', data)
 
   makeRequest(
     { url, data, method },
@@ -46,15 +46,15 @@ export const signIn = (dispatcher, data) => {
         localStorage.setItem('JWT', response.data);
         localStorage.setItem('email', payload.email);
 
-        dispatcher(authActions.setSignInSuccess(payload.email));
-        dispatcher(authActions.setSignInError(false)); // ?
-      } catch (err) {//
+        dispatcher(accountActions.setLoginSuccess(payload.email));
+        dispatcher(accountActions.setLoginError(false)); // ?
+      } catch (err) {
         console.log(err)
-        dispatcher(authActions.setSignInError(true));
+        dispatcher(accountActions.setLoginError(true));
       }
     },
     () => {
-      dispatcher(authActions.setSignInError(true));
+      dispatcher(accountActions.setLoginError(true));
     }
   );
 };

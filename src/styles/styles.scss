@@ -3,7 +3,8 @@ CONFIG MODULES
 ----------------------------------*/
 
 @import "modules/reset.scss";
-@import "modules/react-select.scss";
+//@import "modules/react-select.scss";
+@import "modules/ant.min.scss";
 
 /*----------------------------------
 PARTIALS
@@ -12,6 +13,7 @@ PARTIALS
 @import "partials/form.scss";
 @import "partials/defaults.scss";
 @import "partials/helpers.scss";
+@import "partials/size-limit.scss";
 
 .popup {
   > div > div > div > div {

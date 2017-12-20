@@ -5,26 +5,17 @@ import { connect } from 'react-redux';
 import ClassNames from 'classnames';
 import './Nav.scss';
 
-import Auth from '../Account/Auth';
-import Profile from '../Account/Profile';
-
-import {
-  setSignInSuccess
-} from '../../actions/authActions';
-
-import Dialog from 'material-ui/Dialog';
-
 class Nav extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.logOut = this.logOut.bind(this);
-    this.popup = this.popup.bind(this);
 
     this.state = {
       email: null,
       popup: false,
     }
   }
+
   componentWillMount() {
     const email = localStorage.getItem('email');
 
@@ -36,14 +27,10 @@ class Nav extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.signInSuccess) {
-      this.popup();
+    if (props.loginSuccess) {
       this.setState({
-        email: props.signInSuccess,
+        email: props.loginSuccess
       });
-
-
-      this.props.dispatch(setSignInSuccess(false));
     }
   }
 
@@ -56,20 +43,18 @@ class Nav extends React.Component {
     });
   }
 
-  popup() {
-    this.setState({
-      popup: !this.state.popup,
-    });
-  }
-
   render() {
     const { email } = this.state;
+
     return (
       <nav className="nav">
-        <Link className={ClassNames({
-          'nav-logo': true,
-          active: !this.props.active,
-        })} to="/">
+        <Link
+          className={ClassNames({
+            'nav-logo': true,
+            active: !this.props.active,
+          })}
+          to="/"
+        >
           <strong>ЛОГО</strong>
         </Link>
         <Link
@@ -86,47 +71,30 @@ class Nav extends React.Component {
         <div className="nav_item">Киртан-радио</div>
         <div className="nav_account">
           {!email ?
-            <div
+            <Link
               className={ClassNames({
                 nav_item: true,
                 active: this.props.auth,
               })}
-              onClick={this.popup}
+              to="/login"
             >
               Вход
-              <Dialog
-                className="popup"
-                modal={false}
-                open={this.state.popup}
-                onRequestClose={this.popup}
-              >
-                <Auth onRequestClose={this.popup} />
-              </Dialog>
-            </div>
+            </Link>
           : <div className="nav_user">
-              <div
+              <Link
                 className="nav_user_profile"
-                onClick={this.popup}
+                to="/profile"
               >
                 <img src="http://www.material-ui.com/images/uxceo-128.jpg" />
                 <span>{email}</span>
-
-                <Dialog
-                  className="popup"
-                  modal={false}
-                  open={this.state.popup}
-                  onRequestClose={this.popup}
-                >
-                  <Profile onRequestClose={this.popup} />
-                </Dialog>
-              </div>
+              </Link>
               <a
                 className="nav_item log-out"
                 onClick={this.logOut}
-              >Выход</a>
+              >
+                Выход
+              </a>
           </div>}
-
-
         </div>
       </nav>
     );
@@ -136,9 +104,10 @@ class Nav extends React.Component {
 Nav.propTypes = {
   auth: PropTypes.bool,
   home: PropTypes.bool,
+  // loginSuccess: PropTypes.bool,
 };
 
 export default connect(store => ({
   // signInError: store.auth.signInError,
-  signInSuccess: store.auth.signInSuccess,
+  loginSuccess: store.account.loginSuccess,
 }))(Nav);
