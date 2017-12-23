@@ -18,29 +18,29 @@ const format = 'HH:mm:ss';
 class TaskBar extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.openKirtan = this.openKirtan.bind(this);
-    this.openMeditation = this.openMeditation.bind(this);
+    this.openK = this.openK.bind(this);
+    this.openM = this.openM.bind(this);
 
     this.state = {
-      kirtanVisible: false,
-      meditationVisible: false,
+      kVisible: false,
+      mVisible: false,
     }
   }
 
-  openKirtan() {
+  openK() {
     this.setState({
-      kirtanVisible: !this.state.kirtanVisible,
+      kVisible: !this.state.kVisible,
     });
   }
 
-  openMeditation() {
+  openM() {
     this.setState({
-      meditationVisible: !this.state.meditationVisible,
+      mVisible: !this.state.mVisible,
     });
   }
 
   render() {
-    const { kirtanVisible, meditationVisible } = this.state;
+    const { kVisible, mVisible } = this.state;
 
     // console.log('popup', popup)
     return (
@@ -56,14 +56,14 @@ class TaskBar extends React.Component {
         <div className="task-bar_add">
           <div
             className="task-bar_add_item"
-            onClick={() => this.showModal('k')}
+            onClick={this.openK}
           >
             <i className="task-bar_add_icon" />
             <span>Кират</span>
           </div>
           <div
             className="task-bar_add_item"
-            onClick={() => this.showModal('m')}
+            onClick={this.openM}
           >
             <i className="task-bar_add_icon" />
             <span>Медитация</span>
@@ -72,9 +72,9 @@ class TaskBar extends React.Component {
 
         <Modal
           title="Счетчик киртана"
-          visible={kirtanVisible}
-          onOk={this.openKirtan} //todo refact
-          onCancel={this.openKirtan}
+          visible={kVisible}
+          onOk={this.openK} //todo refact
+          onCancel={this.openK}
           cancelText="Отмена"
         >
           <div className="task-bar_counter">
@@ -89,9 +89,9 @@ class TaskBar extends React.Component {
 
         <Modal
           title="Счетчик медитации"
-          visible={meditationVisible}
-          onOk={this.openMeditation} //todo refact
-          onCancel={this.openMeditation}
+          visible={mVisible}
+          onOk={this.openM} //todo refact
+          onCancel={this.openM}
           cancelText="Отмена"
         >
           <div className="task-bar_counter">
