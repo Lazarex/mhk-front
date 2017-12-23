@@ -28,6 +28,10 @@
     width: 100%;
     //min-height: 100px;
 
+    .ant-select {
+      width: 100%;
+    }
+
     &._50 {
       width: calc(50% - 10px);
 

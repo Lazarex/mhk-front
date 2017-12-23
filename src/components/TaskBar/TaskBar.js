@@ -18,21 +18,29 @@ const format = 'HH:mm:ss';
 class TaskBar extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.showModal = this.showModal.bind(this);
+    this.openKirtan = this.openKirtan.bind(this);
+    this.openMeditation = this.openMeditation.bind(this);
 
     this.state = {
-      visible: null,
+      kirtanVisible: false,
+      meditationVisible: false,
     }
   }
 
-  showModal(visible) {
+  openKirtan() {
     this.setState({
-      visible: visible || null,
+      kirtanVisible: !this.state.kirtanVisible,
+    });
+  }
+
+  openMeditation() {
+    this.setState({
+      meditationVisible: !this.state.meditationVisible,
     });
   }
 
   render() {
-    const { visible } = this.state;
+    const { kirtanVisible, meditationVisible } = this.state;
 
     // console.log('popup', popup)
     return (
@@ -50,33 +58,50 @@ class TaskBar extends React.Component {
             className="task-bar_add_item"
             onClick={() => this.showModal('k')}
           >
-            {/*<FloatingActionButton mini={true} backgroundColor="#00a99d">*/}
-              {/*<ContentAdd />*/}
-            {/*</FloatingActionButton>*/}
+            <i className="task-bar_add_icon" />
             <span>Кират</span>
           </div>
           <div
             className="task-bar_add_item"
             onClick={() => this.showModal('m')}
           >
-            {/*<FloatingActionButton mini={true} backgroundColor="#00a99d">*/}
-              {/*<ContentAdd />*/}
-            {/*</FloatingActionButton>*/}
+            <i className="task-bar_add_icon" />
             <span>Медитация</span>
           </div>
-
         </div>
 
         <Modal
-
-          title="Basic Modal"
-          visible={!!this.state.visible}
-          onOk={() => this.showModal(null)} //todo refact
-          onCancel={() => this.showModal(null)}
+          title="Счетчик киртана"
+          visible={kirtanVisible}
+          onOk={this.openKirtan} //todo refact
+          onCancel={this.openKirtan}
+          cancelText="Отмена"
         >
-          Счетчик {visible === 'k' ? 'Кират' : 'Медитация'}
+          <div className="task-bar_counter">
+            <TimePicker
+              defaultValue={moment('0:0', format)}
+              format={format}
+              size={'large'}
+              placeholder="Введите время"
+            />
+          </div>
+        </Modal>
 
-          <TimePicker defaultValue={moment('12:08', format)} format={format} />
+        <Modal
+          title="Счетчик медитации"
+          visible={meditationVisible}
+          onOk={this.openMeditation} //todo refact
+          onCancel={this.openMeditation}
+          cancelText="Отмена"
+        >
+          <div className="task-bar_counter">
+            <TimePicker
+              defaultValue={moment('0:0', format)}
+              format={format}
+              size={'large'}
+              placeholder="Введите время"
+            />
+          </div>
         </Modal>
 
         <div className="task-bar_log">
@@ -90,7 +115,6 @@ class TaskBar extends React.Component {
             Елена Бестужева, дизайнер (Нью Йорк, США) добавил(а) 30 минут киртана сейчас
           </div>
         </div>
-
       </div>
     );
   }

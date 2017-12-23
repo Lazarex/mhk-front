@@ -1,0 +1,24 @@
+@import '../../styles/partials/theme.scss';
+
+.ant-modal-header {
+  text-align: center;
+  padding: 30px 40px 10px;
+  border: 0;
+
+  .ant-modal-title {
+    font: $default-title;
+  }
+}
+
+.ant-time-picker {
+  width: 194px;
+}
+
+.ant-time-picker-panel-combobox {
+  display: flex;
+  justify-content: center;
+
+  .ant-time-picker-panel-select {
+    width: calc(100% / 3);
+  }
+}

@@ -81,7 +81,7 @@ class Login extends React.Component {
     return (
       <div className="wrapper account">
         <Nav auth/>
-        <div className="size-limit _320">
+        <div className="account_container">
           <h3 className="account_title">Вход</h3>
           <div className="form">
             <div className="form_group">

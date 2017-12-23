@@ -1,8 +1,11 @@
-$default-font: 'Roboto', sans-serif;
+$default-font: Roboto;
+$default-title: 400 32px/1.2 $default-font;
 $default-parts-color: #00a99d;
-$default-transition: .1s;
+$default-parts-hover: #02998a;
+$default-parts-active: #04bfad;
+$default-transition: .15s;
 
-$border-radius: 3px;
+$border-radius: 4px;
 
 $input-border-color: #b3b3b3;
 $input-border-color-error: red;

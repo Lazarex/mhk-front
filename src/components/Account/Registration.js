@@ -86,7 +86,7 @@ class Registration extends React.Component {
     return (
       <div className="wrapper account">
         <Nav auth/>
-        <div className="size-limit _320">
+        <div className="account_container">
           <h3 className="account_title">Регистрация</h3>
           {/*<div className="auth_success">
               <h3>

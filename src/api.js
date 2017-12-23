@@ -10,12 +10,15 @@ export function makeRequest(params, then, error) {
 }
 
 export const registration = (dispatcher, data) => {
-  const url = 'http://mhk.onsib.ru/api/v1/user/';
-
+  const url = 'http://mhk.onsib.ru/api/v1/user/signup';
   const method = 'post';
+  const params = {
+    email: data.email,
+    password: data.password,
+  };
 
   makeRequest(
-    { url, data, method },
+    { url, data: params, method },
     (response) => {
       dispatcher(accountActions.setRegistrationSuccess(true)); // refactor
       dispatcher(accountActions.setRegistrationError(false));
@@ -32,13 +35,16 @@ export const registration = (dispatcher, data) => {
 
 export const login = (dispatcher, data) => {
   const url = 'http://mhk.onsib.ru/api/v1/login';
-
   const method = 'post';
+  const params = {
+    email: data.email,
+    password: data.password,
+  };
 
   console.log('data', data)
 
   makeRequest(
-    { url, data, method },
+    { url, data: params, method },
     response => {
       try {
         const payload = JSON.parse(atob(response.data.match(/\.([^.]+)\./)[1]));

@@ -29,9 +29,38 @@
     width: 320px;
     margin-left: 20px;
 
+    &_icon {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: $default-parts-color;
+      transition: background $default-transition;
+
+      &:after, &:before {
+        position: absolute;
+        content: '';
+        background: #fff;
+        top: 50%;
+        left:  50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &:after {
+        width: calc(50% - 2px);
+        height: 2px;
+      }
+
+      &:before {
+        width: 2px;
+        height: calc(50% - 2px);
+      }
+    }
+
     &_item {
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       &:not(:first-child) {
         margin-left: 40px;
@@ -40,9 +69,29 @@
       span {
         margin-left: 15px;
         font-size: 18px;
-        color: #0073e2;
+        color: $link-color;
         text-decoration: underline;
-        cursor: default;
+        transition: color $default-transition;
+      }
+
+      &:hover {
+        .task-bar_add_icon {
+          background: $default-parts-hover;
+        }
+
+        span {
+          color: $link-color-hover;
+        }
+      }
+
+      &:active {
+        .task-bar_add_icon {
+          background: $default-parts-active;
+        }
+
+        span {
+          color: $link-color-active;
+        }
       }
     }
   }
@@ -60,6 +109,10 @@
     &_item {
       padding: 5px 0;
     }
+  }
+
+  &_counter {
+    text-align: center;
   }
 }
 

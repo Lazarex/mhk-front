@@ -30,7 +30,7 @@ class Form extends React.Component {
       <div className="stats-form form">
         <div className="form_group">
           <div className="form_item _50">
-            <Select defaultValue="lucy" onChange={this.setPeriod}>
+            <Select defaultValue="lucy" size={'large'} onChange={this.setPeriod}>
               <Option value="jack">Jack</Option>
               <Option value="lucy">Lucy</Option>
               <Option value="disabled" disabled>Disabled</Option>
@@ -38,7 +38,7 @@ class Form extends React.Component {
             </Select>
           </div>
           <div className="form_item _50">
-            <Select defaultValue="lucy" style={{width: 200}} size={'large'} onChange={this.setPeriod}>
+            <Select defaultValue="lucy" size={'large'} onChange={this.setPeriod}>
               <Option value="jack">Jack</Option>
               <Option value="lucy">Lucy</Option>
               <Option value="disabled" disabled>Disabled</Option>
