@@ -120,6 +120,14 @@ class Login extends React.Component {
                 <Button
                   type="primary"
                   size={'large'}
+                  className="vk"
+                  href="http://mhk.onsib.ru/api/v1/auth/vkontakte"
+                >
+                  Войти через Вконтакте
+                </Button>
+                <Button
+                  type="primary"
+                  size={'large'}
                   onClick={this.submit}
                 >
                   Войти

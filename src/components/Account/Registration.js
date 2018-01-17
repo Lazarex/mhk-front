@@ -5,6 +5,7 @@ import ClassNames from 'classnames';
 import Nav from '../Nav/Nav';
 import { checkEmail, checkPassword } from './libs';
 import { registration } from '../../api';
+import { Link } from 'react-router-dom';
 import { Input, Button } from 'antd';
 import './Account.scss';
 
@@ -136,6 +137,14 @@ class Registration extends React.Component {
                 <Button
                   type="primary"
                   size={'large'}
+                  className="vk"
+                  href="http://mhk.onsib.ru/api/v1/auth/vkontakte"
+                >
+                  Войти через Вконтакте
+                </Button>
+                <Button
+                  type="primary"
+                  size={'large'}
                   onClick={this.submit}
                 >
                   Зарегистрироваться
@@ -143,6 +152,13 @@ class Registration extends React.Component {
                 {this.props.registrationError && <p className="error">
                   Такой логин уже существует
                 </p>}
+              </div>
+            </div>
+            <div className="form_group">
+              <div className="form_item">
+                <Link to="/login">
+                  Вход
+                </Link>
               </div>
             </div>
           </div>
